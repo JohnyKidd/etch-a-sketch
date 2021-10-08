@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html>
+<div id="mainDiv">
     <head>
         <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8">
+        <h1>Etch a Sketch</h1>
     </head>
     <body>
         <div id="container"></div>
+        <input type="color" id="drawColor" value="red">
+        <label for="rainbowColor">Rainbow checker</label>
+        <input type="checkbox" id="rainbowColor">
     </body>
-
-    <script defer>
-        //defining variables//
-        let size=16;
-        const containerElement = document.querySelector("#container");
-        
-        for(i=0;i<size;i++){
-            const gridElement = document.createElement("div");
-            gridElement.className="grid";
-            containerElement.appendChild(gridElement);
-        }
-    </script>
+</div>
 </html>
+<script defer>
+    //adding erase function//
+    const resetGame = document.querySelector("#resetButton");
+    let sizeX=16;
+    let sizeY=16;
+    const containerElement = document.querySelector("#container");
+
+    //creating the grid and set the ID and CLASS for them//
+    for(i=0;i<sizeX*sizeY;i++){
+        const gridElement = document.createElement("div");
+        gridElement.className="grid";
+        gridElement.id="grid"+i.toString();
+        containerElement.appendChild(gridElement);
+    }
+
+    const gridFull = document.querySelectorAll(".grid");
+    const colorPicker = document.querySelector("#drawColor");
+    const rainbowBool = document.querySelector("#rainbowColor");
+
+    for (j=0;j<gridFull.length;j++){
+      const nodeItem = gridFull.item(j)
+      nodeItem.addEventListener('mouseover', function (e){
+        if (rainbowBool.checked){
+          const randomColor = Math.floor(Math.random()*16777215).toString(16);
+          nodeItem.style['background-color']="#"+randomColor;
+        }
+        else{
+          nodeItem.style['background-color']=colorPicker.value;
+        }
+      });
+    }
+</script>

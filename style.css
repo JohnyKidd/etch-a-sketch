@@ -3,7 +3,18 @@
     border: 0.1em solid black;
 }
 #container{
-      display: grid;
-      grid-template-columns: repeat(4, 5em);
-      grid-template-rows: repeat(4, 5em);
+      display: inline-grid;
+      grid-template-columns: repeat(16, 1em);
+      grid-template-rows: repeat(16, 1em);
+}
+#mainDiv{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap:2em;
+
+}
+*{
+  background-color: #bfa58a;
+  color: #800;
 }
