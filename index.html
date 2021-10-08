@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id="container"></div>
+    </body>
+
+    <script defer>
+        //defining variables//
+        let size=16;
+        const containerElement = document.querySelector("#container");
+        
+        for(i=0;i<size;i++){
+            const gridElement = document.createElement("div");
+            gridElement.className="grid";
+            containerElement.appendChild(gridElement);
+        }
+    </script>
+</html>
